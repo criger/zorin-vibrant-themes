@@ -29,7 +29,9 @@ replacing the original two:
 | `ZorinVibrantBlue-Gradient` | `ZorinVibrantBlue` | Richer blue gradients |
 
 The gradient themes add a **horizontal titlebar gradient**, more subtle **vertical
-sidebar and window-background gradients**, and softer inactive-window colors.
+sidebar gradients**, and softer inactive-window colors. The broad root-window
+background gradient was removed after it caused the desktop wallpaper to turn
+white when all windows were minimized on the maintainer's Zorin OS 18.1 setup.
 They do **not** add transparency, blur, alter the taskbar or replace GNOME Shell.
 Not every GTK application honors all CSS overrides.
 
@@ -61,10 +63,11 @@ To roll back, switch to `ZorinVibrantBlue-Light` or `ZorinVibrantBlue`.
 To uninstall the gradient variants, switch away first and remove only their
 two generated folders from `~/.themes/`. Reopen applications to see changes.
 
-**Compatibility:** Developed and visually evaluated on the maintainer's Zorin
-OS 18.1 desktop, including GTK3/GTK4 applications. Automated tests use synthetic
-theme fixtures; installation from this newly published script has not yet
-been separately tested on the actual desktop.
+**Compatibility:** The maintainer manually verified that the local gradient fix
+preserves the desktop wallpaper even with every window minimized on Zorin OS 18.1.
+Automated installer tests use synthetic GTK3/GTK4 theme fixtures; installation
+from this newly published GitHub script has not yet been tested on that machine.
+Different applications may apply custom CSS or behave differently.
 
 ## Requirements
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-20 — Fix white wallpaper when windows minimized
+
+- Removed broad `.background` / `window.background` gradient overrides in
+  both GTK3 and GTK4, preserving the titlebar and sidebar gradients.
+- Added regression coverage to ensure future generated gradient themes do not
+  reintroduce global desktop/window background overrides (9 tests total).
+- Both variants were corrected locally and the user confirmed the desktop
+  wallpaper remains visible when all windows are minimized.
+- Original non-gradient themes, GNOME Shell and taskbar remain unchanged.
+
 ## 2026-11-20 — Add optional gradient variants
 
 - Added `ZorinVibrantBlue-Light-Gradient` and `ZorinVibrantBlue-Gradient` with

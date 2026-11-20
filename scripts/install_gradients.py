@@ -19,14 +19,12 @@ SPECS = {
         "title": ("#69BDF1", "#B1E0FA", "#EDF8FF"),
         "title_inactive": ("#DEEFFA", "#F5FBFF"),
         "sidebar": ("#B8DFF9", "#E7F5FF"),
-        "window": ("#F9FDFF", "#E8F6FF"),
     },
     "ZorinVibrantBlue-Gradient": {
         "source": "ZorinVibrantBlue",
         "title": ("#439FDF", "#8CCDF4", "#D4EBFF"),
         "title_inactive": ("#C4E2F4", "#EDF8FF"),
         "sidebar": ("#9DCCF0", "#DCEFFF"),
-        "window": ("#E5F4FF", "#CFE9FF"),
     },
 }
 
@@ -47,19 +45,12 @@ def css_extension(spec: dict, kind: str) -> str:
     title_a, title_b, title_c = spec["title"]
     inactive_a, inactive_b = spec["title_inactive"]
     sidebar_a, sidebar_b = spec["sidebar"]
-    window_a, window_b = spec["window"]
     if kind == "gtk-3.0":
         return f"""
 /* ZORIN VIBRANT GRADIENT - GTK 3
- * Only paints background surfaces; leaves widget geometry and icons intact.
+ * Only paints titlebars and sidebars; leaves the desktop/window root alone.
  * Unfocused headers are intentionally softer.
  */
-.background {{
-  background-image: linear-gradient(to bottom, {window_a}, {window_b});
-}}
-.background:backdrop {{
-  background-image: none;
-}}
 .titlebar:not(headerbar), headerbar, headerbar.titlebar {{
   background-image: linear-gradient(to right, {title_a}, {title_b} 58%, {title_c});
 }}
@@ -74,13 +65,8 @@ def css_extension(spec: dict, kind: str) -> str:
         return f"""
 /* ZORIN VIBRANT GRADIENT - GTK 4 / libadwaita
  * Some applications supply their own CSS and may not adopt these rules.
+ * Root background overrides were removed after a wallpaper regression.
  */
-window.background, .background {{
-  background-image: linear-gradient(to bottom, {window_a}, {window_b});
-}}
-window.background:backdrop, .background:backdrop {{
-  background-image: none;
-}}
 headerbar, headerbar.titlebar, .titlebar:not(headerbar) {{
   background-image: linear-gradient(to right, {title_a}, {title_b} 58%, {title_c});
 }}
@@ -132,8 +118,10 @@ def install_one(base_dir: Path, name: str, replace: bool) -> Path:
 
         notice = (
             f"{name}: experimental derivative of {spec['source']}.\n"
-            "2026-11-20: added horizontal headerbar gradients, vertical sidebar and\n"
-            "window background gradients to gtk-3.0/gtk.css and gtk-4.0/gtk.css.\n"
+            "2026-11-20: added horizontal headerbar and vertical sidebar gradients\n"
+            "to gtk-3.0/gtk.css and gtk-4.0/gtk.css.\n"
+            "2026-11-20: removed broad window-background overrides after a reported\n"
+            "white-desktop regression when all windows were minimized.\n"
             "Original Zorin CSS/rights remain with the upstream authors.\n"
             "Optional gradient variant. No GNOME Shell/panel changes.\n"
         )

@@ -49,6 +49,20 @@ class GradientThemeTests(unittest.TestCase):
                 "headerbar { color: #123354; border-radius: 15px; }\n",
             )
 
+
+    def test_no_global_window_background_override(self):
+        """Broad GTK background rules must not override the desktop wallpaper."""
+        for name in mod.SPECS:
+            target = mod.install_one(self.root, name, False)
+            for gtk in ("gtk-3.0", "gtk-4.0"):
+                css = (target / gtk / "gtk.css").read_text()
+                extension = css.split("/* ZORIN VIBRANT GRADIENT - GTK ", 1)[1]
+                self.assertNotIn(".background {", extension)
+                self.assertNotIn(".background:backdrop", extension)
+                self.assertNotIn("window.background", extension)
+                self.assertIn("headerbar", extension)
+                self.assertIn(".sidebar:not(separator)", extension)
+
     def test_no_overwrite_without_explicit_replace(self):
         name = "ZorinVibrantBlue-Gradient"
         target = self.root / name
