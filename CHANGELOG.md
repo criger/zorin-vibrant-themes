@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-20 — Add two Extra-Gradient variants
+
+- Added `ZorinVibrantBlue-Light-extra-gradient` and `ZorinVibrantBlue-extra-gradient`, each derived from the corresponding installed Gradient theme.
+- Added targeted GTK3 side-panel scroller and GTK4 sidebar-pane / navigation-list gradients; existing titlebar effects remain intact.
+- No broad root-window background CSS or GNOME Shell/taskbar changes; source Gradient themes are left unchanged.
+- Installer checks the wallpaper safety fix, refuses unsafe source themes, and backs up prior Extra-Gradient variants with `--replace`.
+- Added six isolated tests for the new installer (15 tests across the project).
+- Both Extra-Gradient variants were approved visually on Zorin OS 18.1; the user confirmed normal behavior when all windows are minimized.
+
 ## 2026-11-20 — Fix white wallpaper when windows minimized
 
 - Removed broad `.background` / `window.background` gradient overrides in

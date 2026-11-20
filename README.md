@@ -2,7 +2,7 @@
 
 **A splash of blue for Zorin OS — without replacing what makes Zorin work.**
 
-Zorin Vibrant Themes provides four blue-forward, light-mode GTK theme variants based on Zorin's original `ZorinBlue-Light` theme. The idea is simple: keep Zorin's rounded corners, widgets, spacing and layout, but replace its muted gray-blue surfaces with cleaner, more colorful blues.
+Zorin Vibrant Themes provides six blue-forward, light-mode GTK theme variants based on Zorin's original `ZorinBlue-Light` theme. The idea is simple: keep Zorin's rounded corners, widgets, spacing and layout, but replace its muted gray-blue surfaces with cleaner, more colorful blues.
 
 > **Unofficial community project** by **Cristhian Gertner**. Not affiliated with or endorsed by Zorin OS.
 
@@ -68,6 +68,67 @@ preserves the desktop wallpaper even with every window minimized on Zorin OS 18.
 Automated installer tests use synthetic GTK3/GTK4 theme fixtures; installation
 from this newly published GitHub script has not yet been tested on that machine.
 Different applications may apply custom CSS or behave differently.
+
+
+## Optional Extra-Gradient variants
+
+The two **Extra-Gradient** themes extend the existing Gradient variants with
+targeted sidebar rules. They are installed **alongside** all four existing
+themes—not over them:
+
+| Extra-Gradient theme | Derived from | Extra coverage |
+| --- | --- | --- |
+| `ZorinVibrantBlue-Light-extra-gradient` | `ZorinVibrantBlue-Light-Gradient` | Softer sidebar gradient for additional GTK widgets |
+| `ZorinVibrantBlue-extra-gradient` | `ZorinVibrantBlue-Gradient` | Stronger blue sidebar gradient for additional GTK widgets |
+
+The extra GTK3 CSS targets `stacksidebar.sidebar > scrolledwindow` and
+control-center/libhandy navigation scrollers. The GTK4 CSS targets
+`.sidebar-pane`, navigation lists and the narrow
+`.navigation-sidebar.background` surface, including inactive-window states.
+The established headerbar gradients are inherited unchanged from their
+Gradient parents. No global `.background` or `window.background` gradient
+is added; the earlier white-wallpaper regression must not return.
+
+### Install Extra-Gradient
+
+First install the two base Vibrant themes and the two Gradient themes as
+documented above. Then:
+
+```bash
+python3 scripts/install_extra_gradients.py
+```
+
+If you already tested the local Extra-Gradient prototypes and want to
+reinstall using the GitHub script, back up the installed variants first:
+
+```bash
+python3 scripts/install_extra_gradients.py --replace
+```
+
+Previous Extra-Gradient installations are backed up under
+`~/.themes/.zorin-extra-gradient-backups/`. The installer checks that
+its two source Gradient themes contain the safe wallpaper fix and refuses
+to copy an unpatched source. It never changes the source themes or system CSS.
+
+Choose in **Zorin Appearance → Theme → Other → Applications**, or:
+
+```bash
+gsettings set org.gnome.desktop.interface color-scheme 'default'
+gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue-Light-extra-gradient'
+# Or:
+gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue-extra-gradient'
+```
+
+To revert immediately, select `ZorinVibrantBlue-Light-Gradient` or
+`ZorinVibrantBlue-Gradient`. Open applications again to reload GTK styles.
+
+**Verification:** Both Extra-Gradient variants were installed and visually
+approved on Zorin OS 18.1 (including GNOME Settings and Zorin Appearance).
+The maintainer also confirmed the desktop wallpaper remains visible when
+all windows are minimized. Six isolated filesystem tests check install,
+backup, metadata, CSS scope and unsafe-source refusal. Other GTK applications
+and Zorin versions remain unverified; real-world layouts may use different
+CSS node structures. No blur or transparency is included.
 
 ## Requirements
 
@@ -146,7 +207,7 @@ python3 -m unittest discover -s tests -v
 python3 -m compileall -q scripts tests
 ```
 
-Tests cover the original and gradient installers using synthetic Zorin-style theme fixtures, so they can run without installing any theme or modifying your desktop. Zorin OS 18.1 appearance was manually reviewed during palette prototyping; cross-version compatibility remains to be verified.
+Tests cover the base, Gradient and Extra-Gradient installers using synthetic Zorin-style theme fixtures, so they can run without installing any theme or modifying your desktop. Zorin OS 18.1 appearance was manually reviewed during palette prototyping; cross-version compatibility remains to be verified.
 
 ## Credits, copyright and licensing
 
