@@ -16,6 +16,31 @@ Zorin Vibrant Themes provides six blue-forward, light-mode GTK theme variants ba
 
 > **Unofficial community project** by **Cristhian Gertner**. Not affiliated with or endorsed by Zorin OS.
 
+## Screenshots
+
+These are the **original, unmodified PNG screenshots** from Zorin OS 18.1,
+showing the `ZorinVibrantBlue-Light-extra-gradient` theme. No downscaling
+or lossy image compression has been applied. Click an image to view it at its
+original resolution.
+
+<table>
+  <tr>
+    <th>Zorin Appearance</th>
+    <th>GNOME Settings</th>
+  </tr>
+  <tr>
+    <td><a href="docs/images/zorin-appearance-extra-gradient.png"><img src="docs/images/zorin-appearance-extra-gradient.png" alt="Zorin Appearance: horizontal blue titlebar gradient and vertical sidebar gradient" width="440"></a></td>
+    <td><a href="docs/images/gnome-settings-extra-gradient.png"><img src="docs/images/gnome-settings-extra-gradient.png" alt="GNOME Settings: blue vertical gradient across the navigation sidebar" width="440"></a></td>
+  </tr>
+</table>
+
+**Nemo file manager — full-width gradient titlebar**
+
+[![Nemo file manager with a horizontal blue gradient across the titlebar, classic menu and sidebar](docs/images/nemo-gradient-titlebar.png)](docs/images/nemo-gradient-titlebar.png)
+
+*These are real screenshots, not mockups. The themes preserve Zorin's
+original widget geometry, while GTK application support can vary.*
+
 ## Original color themes
 
 | Variant | Window background | Sidebar / borders | Secondary sidebar | Inactive background |
