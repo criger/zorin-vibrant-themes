@@ -2,6 +2,10 @@
 
 ☕🍺 **Like this project?** If you enjoy this solution, consider [buying me a coffee or a beer](https://buymeacoffee.com/criger). I get thirsty from time to time, and your support helps fund my *very serious research* into which beverage tastes best when I'm thirsty! 😄
 
+<a href="https://buymeacoffee.com/criger">
+  <img src="https://media.giphy.com/media/wQalJEIkSWUaVTXHHB/giphy.gif" alt="Animated Support Me on Buy Me a Coffee sticker by Buy Me a Coffee" width="240">
+</a>
+
 **A splash of blue for Zorin OS — without replacing what makes Zorin work.**
 
 Zorin Vibrant Themes provides six blue-forward, light-mode GTK theme variants based on Zorin's original `ZorinBlue-Light` theme. The idea is simple: keep Zorin's rounded corners, widgets, spacing and layout, but replace its muted gray-blue surfaces with cleaner, more colorful blues.
