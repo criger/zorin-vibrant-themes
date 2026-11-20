@@ -73,7 +73,7 @@ gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue-Light'
 gsettings set org.gnome.desktop.interface gtk-theme 'ZorinBlue-Light'
 ```
 
-To remove the themes, first switch away from them and then delete the two user theme directories. `--replace` leaves dated `.backup-…` folders in `~/.themes`; review those before deleting them.
+To remove the themes, first switch away from them and then delete the two user theme directories. `--replace` keeps dated backups in `~/.themes/.zorin-vibrant-backups/`; review those before deleting them.
 
 ## What the installer actually changes
 
