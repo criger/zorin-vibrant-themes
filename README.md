@@ -25,8 +25,8 @@ replacing the original two:
 
 | New gradient theme | Derived from | Appearance |
 | --- | --- | --- |
-| \`ZorinVibrantBlue-Light-Gradient\` | \`ZorinVibrantBlue-Light\` | Soft, airy blue gradients |
-| \`ZorinVibrantBlue-Gradient\` | \`ZorinVibrantBlue\` | Richer blue gradients |
+| `ZorinVibrantBlue-Light-Gradient` | `ZorinVibrantBlue-Light` | Soft, airy blue gradients |
+| `ZorinVibrantBlue-Gradient` | `ZorinVibrantBlue` | Richer blue gradients |
 
 The gradient themes add a **horizontal titlebar gradient**, more subtle **vertical
 sidebar and window-background gradients**, and softer inactive-window colors.
@@ -35,31 +35,31 @@ Not every GTK application honors all CSS overrides.
 
 Install the two standard variants first (see [Install](#install)); then run:
 
-\`\`\`bash
+```bash
 python3 scripts/install_gradients.py
-\`\`\`
+```
 
 If you already installed the local gradient prototypes and want to reinstall
 from GitHub while keeping a dated backup:
 
-\`\`\`bash
+```bash
 python3 scripts/install_gradients.py --replace
-\`\`\`
+```
 
-Backups of gradient themes are placed under \`~/.themes/.zorin-gradient-backups/\`.
+Backups of gradient themes are placed under `~/.themes/.zorin-gradient-backups/`.
 The original Vibrant variants and the system themes remain untouched.
 Use Zorin Appearance → Theme → Other → Applications, or switch from a terminal:
 
-\`\`\`bash
+```bash
 gsettings set org.gnome.desktop.interface color-scheme 'default'
 gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue-Light-Gradient'
 # Or:
 gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue-Gradient'
-\`\`\`
+```
 
-To roll back, switch to \`ZorinVibrantBlue-Light\` or \`ZorinVibrantBlue\`.
+To roll back, switch to `ZorinVibrantBlue-Light` or `ZorinVibrantBlue`.
 To uninstall the gradient variants, switch away first and remove only their
-two generated folders from \`~/.themes/\`. Reopen applications to see changes.
+two generated folders from `~/.themes/`. Reopen applications to see changes.
 
 **Compatibility:** Developed and visually evaluated on the maintainer's Zorin
 OS 18.1 desktop, including GTK3/GTK4 applications. Automated tests use synthetic
