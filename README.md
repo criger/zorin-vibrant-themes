@@ -2,11 +2,11 @@
 
 **A splash of blue for Zorin OS — without replacing what makes Zorin work.**
 
-Zorin Vibrant Themes provides two blue-forward, light-mode GTK theme variants based on Zorin's original `ZorinBlue-Light` theme. The idea is simple: keep Zorin's rounded corners, widgets, spacing and layout, but replace its muted gray-blue surfaces with cleaner, more colorful blues.
+Zorin Vibrant Themes provides four blue-forward, light-mode GTK theme variants based on Zorin's original `ZorinBlue-Light` theme. The idea is simple: keep Zorin's rounded corners, widgets, spacing and layout, but replace its muted gray-blue surfaces with cleaner, more colorful blues.
 
 > **Unofficial community project** by **Cristhian Gertner**. Not affiliated with or endorsed by Zorin OS.
 
-## Themes
+## Original color themes
 
 | Variant | Window background | Sidebar / borders | Secondary sidebar | Inactive background |
 | --- | --- | --- | --- | --- |
@@ -16,6 +16,55 @@ Zorin Vibrant Themes provides two blue-forward, light-mode GTK theme variants ba
 Both variants retain Zorin's original bright blue accent (`#15A6F0`), dark text, light content views, and widget geometry. **Neither variant is a dark theme.** The name without `-Light` means *stronger blue*, not dark mode.
 
 These are GTK application themes, **not** replacements for Zorin Taskbar, GNOME Shell or your icon set.
+
+
+## Optional gradient variants
+
+The gradient experiment introduces **two additional light-based GTK themes** without
+replacing the original two:
+
+| New gradient theme | Derived from | Appearance |
+| --- | --- | --- |
+| \`ZorinVibrantBlue-Light-Gradient\` | \`ZorinVibrantBlue-Light\` | Soft, airy blue gradients |
+| \`ZorinVibrantBlue-Gradient\` | \`ZorinVibrantBlue\` | Richer blue gradients |
+
+The gradient themes add a **horizontal titlebar gradient**, more subtle **vertical
+sidebar and window-background gradients**, and softer inactive-window colors.
+They do **not** add transparency, blur, alter the taskbar or replace GNOME Shell.
+Not every GTK application honors all CSS overrides.
+
+Install the two standard variants first (see [Install](#install)); then run:
+
+\`\`\`bash
+python3 scripts/install_gradients.py
+\`\`\`
+
+If you already installed the local gradient prototypes and want to reinstall
+from GitHub while keeping a dated backup:
+
+\`\`\`bash
+python3 scripts/install_gradients.py --replace
+\`\`\`
+
+Backups of gradient themes are placed under \`~/.themes/.zorin-gradient-backups/\`.
+The original Vibrant variants and the system themes remain untouched.
+Use Zorin Appearance → Theme → Other → Applications, or switch from a terminal:
+
+\`\`\`bash
+gsettings set org.gnome.desktop.interface color-scheme 'default'
+gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue-Light-Gradient'
+# Or:
+gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue-Gradient'
+\`\`\`
+
+To roll back, switch to \`ZorinVibrantBlue-Light\` or \`ZorinVibrantBlue\`.
+To uninstall the gradient variants, switch away first and remove only their
+two generated folders from \`~/.themes/\`. Reopen applications to see changes.
+
+**Compatibility:** Developed and visually evaluated on the maintainer's Zorin
+OS 18.1 desktop, including GTK3/GTK4 applications. Automated tests use synthetic
+theme fixtures; installation from this newly published script has not yet
+been separately tested on the actual desktop.
 
 ## Requirements
 
@@ -94,7 +143,7 @@ python3 -m unittest discover -s tests -v
 python3 -m compileall -q scripts tests
 ```
 
-Tests use synthetic Zorin-style theme fixtures, so they can run without installing any theme or modifying your desktop. Zorin OS 18.1 appearance was manually reviewed during palette prototyping; cross-version compatibility remains to be verified.
+Tests cover the original and gradient installers using synthetic Zorin-style theme fixtures, so they can run without installing any theme or modifying your desktop. Zorin OS 18.1 appearance was manually reviewed during palette prototyping; cross-version compatibility remains to be verified.
 
 ## Credits, copyright and licensing
 

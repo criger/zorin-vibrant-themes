@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-20 — Add optional gradient variants
+
+- Added \`ZorinVibrantBlue-Light-Gradient\` and \`ZorinVibrantBlue-Gradient\` with
+  horizontal titlebar and vertical sidebar/window CSS gradients in GTK3/GTK4.
+- Gradient installer derives from the two locally installed base Vibrant themes.
+- Existing themes and system CSS are preserved; \`--replace\` backs up older
+  gradient variants.
+- Added four isolated filesystem regression tests (eight total).
+- Gradient palettes were approved in a local user test before publication.
+- Transparency and blur are **not** included; a separate Glass experiment is next.
+
 ## 2026-11-20 — Initial public release
 
 - Two light-based variants: `ZorinVibrantBlue-Light` and `ZorinVibrantBlue`.
