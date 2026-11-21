@@ -18,7 +18,7 @@ Zorin Vibrant Themes is an unofficial, community-maintained set of colorful GTK3
 
 ## Screenshots
 
-These are **original, unmodified PNG screenshots** captured on Zorin OS 18.1 with the historical `ZorinVibrantBlue-Light-extra-gradient` theme. The new **Gradient** style includes these extended sidebar rules. Actual appearance may vary by GTK version and application.
+These are **real, unmodified screenshots** captured on Zorin OS 18.1 using the current theme family.
 
 <table>
   <tr>
@@ -26,8 +26,8 @@ These are **original, unmodified PNG screenshots** captured on Zorin OS 18.1 wit
     <th>GNOME Settings</th>
   </tr>
   <tr>
-    <td><a href="docs/images/zorin-appearance-extra-gradient.png"><img src="docs/images/zorin-appearance-extra-gradient.png" alt="Zorin Appearance: horizontal blue titlebar gradient and vertical sidebar gradient" width="440"></a></td>
-    <td><a href="docs/images/gnome-settings-extra-gradient.png"><img src="docs/images/gnome-settings-extra-gradient.png" alt="GNOME Settings: blue vertical gradient across the navigation sidebar" width="440"></a></td>
+    <td><a href="docs/images/zorin-appearance-blue-light-gradient.png"><img src="docs/images/zorin-appearance-blue-light-gradient.png" alt="Zorin Appearance with the ZorinVibrantBlue-Light-Gradient theme selected" width="440"></a></td>
+    <td><a href="docs/images/gnome-settings-blue-gradient.png"><img src="docs/images/gnome-settings-blue-gradient.png" alt="GNOME Settings with a blue navigation sidebar gradient" width="440"></a></td>
   </tr>
 </table>
 
@@ -35,7 +35,7 @@ These are **original, unmodified PNG screenshots** captured on Zorin OS 18.1 wit
 
 [![Nemo file manager with a horizontal blue gradient across the titlebar, classic menu and sidebar](docs/images/nemo-gradient-titlebar.png)](docs/images/nemo-gradient-titlebar.png)
 
-*Screenshots show a previously published prototype, not a mockup. The six other color families still need independent visual verification across applications.*
+*These are real screenshots, not mockups. Appearance may vary a little between GTK applications.*
 
 ## Choose your color, intensity, and style
 
@@ -52,7 +52,7 @@ The `<Color>` placeholder is replaced with the color name, for example `Green` o
 
 **Important:** Both Light and Rich are **light-based GTK themes**. Rich is not Zorin Dark mode. Every variant uses its corresponding original `/usr/share/themes/Zorin<Color>-Light` source and retains the system's accent colors and widget geometry.
 
-The **Gradient** variant combines the earlier Gradient titlebar/sidebar effect with the *Extra-Gradient* fixes for additional GTK3/GTK4 navigation panels. There is no separate Extra-Gradient choice in the new installer. Gradient does **not** mean blur or translucent glass.
+The **Gradient** variant adds full gradient styling to titlebars and supported sidebars/navigation areas. Gradient does **not** mean blur or translucent glass.
 
 ## Install and uninstall: one interactive manager
 
@@ -64,8 +64,6 @@ git clone https://github.com/criger/zorin-vibrant-themes.git
 cd zorin-vibrant-themes
 python3 install.py
 ```
-
-If you have already cloned the project, update your checkout before running `python3 install.py`.
 
 The manager behaves as follows:
 
@@ -117,42 +115,27 @@ python3 install.py --help
 
 The CLI defaults to `--tone rich --variant gradient` when omitted. The interactive manager remains the recommended way to install and uninstall themes.
 
-## Existing installations and retired variants
-
-The new manager uses names shared with some of the previous Blue themes. For example, `ZorinVibrantBlue-Gradient` now includes the **extra sidebar coverage** as well as its original gradients. If you have the older version with the same name, reinstalling it through the new manager (and approving replacement) gives you the updated version while retaining a backup.
-
-The older `scripts/install.py`, `scripts/install_gradients.py`, and `scripts/install_extra_gradients.py` remain in the repository for historical reproducibility; **use the new root-level `python3 install.py` for new installations**. The historical scripts are not required by the new manager.
-
-To preview and optionally remove only retired **Blue/Green Extra-Gradient and Glass** folders:
-
-```bash
-python3 cleanup_legacy.py --dry-run
-python3 cleanup_legacy.py
-```
-
-The new cleanup script recognizes **only** `-extra-gradient` and `-Glass` names for Blue/Green; it does **not** remove current Light, Rich, or Gradient variants. Do not use older experimental cleanup scripts on a new installation.
-
 ## What the installer changes
 
 - Reads the original `Zorin<Color>-Light` GTK theme from the local machine; copies it to a separate, user-specific folder under `~/.themes/`.
 - Recolors only light `gtk-3.0/gtk.css` and `gtk-4.0/gtk.css` using color-specific palettes.
-- For Gradient, adds narrowly targeted titlebar and navigation/sidebar gradients, including the previously approved Extra-Gradient selectors.
+- For Gradient, adds narrowly targeted titlebar and navigation/sidebar gradients.
 - Keeps the original theme's icons, widget geometry, dark stylesheets, Shell styling, panel, taskbar, wallpaper and fisheye extension unchanged.
 - Updates the generated theme's metadata, preserves the GTK4 `.libadwaita` marker, and adds derivative-change and GPL notices.
 - Uses preflight checks and staging; explicit replacements are backed up under `~/.themes/.zorin-vibrant-backups/` and rolled back on an installation failure.
 
-**Safety note:** A former experimental broad `.background` / `window.background` gradient caused a white-wallpaper regression when all windows were minimized. The new generator does **not** reintroduce those global overrides. No glass transparency or compositor blur is included.
+**Safety:** The generator uses narrowly scoped GTK CSS selectors, without changing root-window backgrounds. It does not add transparency or compositor blur.
 
 ## Development and testing
 
 ```bash
 python3 -m unittest discover -s tests -v
-python3 -m compileall -q install.py cleanup_legacy.py scripts tests
+python3 -m compileall -q install.py scripts tests
 ```
 
-The theme-manager test module checks all 32 variant combinations, source compatibility, selective installation, backup/rollback, safe removal, and English prompts with synthetic Zorin-style file trees. Previous installers have their own historical test modules. These automated tests do not establish visual compatibility across all Zorin releases or third-party applications.
+The theme-manager test module checks all 32 variant combinations, source compatibility, selective installation, backup/rollback, safe removal, and English prompts with synthetic Zorin-style file trees. These automated tests do not establish visual compatibility across all Zorin releases or third-party applications.
 
-The Blue palettes and initial Green palette were visually reviewed on Zorin OS 18.1. Other colors were generated from their stock Zorin counterparts and remain subject to real desktop testing. All 8 colors were inspected against their original Zorin color files.
+The Blue palettes and initial Green palette were visually reviewed on Zorin OS 18.1. Other colors were generated from their stock Zorin counterparts and remain subject to real desktop testing.
 
 ## Credits, copyright, and licensing
 
