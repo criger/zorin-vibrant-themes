@@ -10,18 +10,15 @@ I get thirsty from time to time, and your support helps fund my ***very serious 
 
 ---
 
-**A splash of blue for Zorin OS — without replacing what makes Zorin work.**
+**More color for Zorin OS — without replacing what makes Zorin work.**
 
-Zorin Vibrant Themes provides six blue-forward, light-mode GTK theme variants based on Zorin's original `ZorinBlue-Light` theme. The idea is simple: keep Zorin's rounded corners, widgets, spacing and layout, but replace its muted gray-blue surfaces with cleaner, more colorful blues.
+Zorin Vibrant Themes is an unofficial, community-maintained set of colorful GTK3/GTK4 application themes based on Zorin's original light themes. It preserves Zorin's rounded corners, widgets, spacing, layout, icons, and system accent colors while giving the background surfaces and optional gradients more character.
 
 > **Unofficial community project** by **Cristhian Gertner**. Not affiliated with or endorsed by Zorin OS.
 
 ## Screenshots
 
-These are the **original, unmodified PNG screenshots** from Zorin OS 18.1,
-showing the `ZorinVibrantBlue-Light-extra-gradient` theme. No downscaling
-or lossy image compression has been applied. Click an image to view it at its
-original resolution.
+These are **original, unmodified PNG screenshots** captured on Zorin OS 18.1 with the historical `ZorinVibrantBlue-Light-extra-gradient` theme. The new **Gradient** style includes these extended sidebar rules. Actual appearance may vary by GTK version and application.
 
 <table>
   <tr>
@@ -38,222 +35,135 @@ original resolution.
 
 [![Nemo file manager with a horizontal blue gradient across the titlebar, classic menu and sidebar](docs/images/nemo-gradient-titlebar.png)](docs/images/nemo-gradient-titlebar.png)
 
-*These are real screenshots, not mockups. The themes preserve Zorin's
-original widget geometry, while GTK application support can vary.*
+*Screenshots show a previously published prototype, not a mockup. The six other color families still need independent visual verification across applications.*
 
-## Original color themes
+## Choose your color, intensity, and style
 
-| Variant | Window background | Sidebar / borders | Secondary sidebar | Inactive background |
-| --- | --- | --- | --- | --- |
-| **ZorinVibrantBlue-Light** | `#EDF8FF` | `#CFE8FF` | `#DDEEFF` | `#F1F8FF` |
-| **ZorinVibrantBlue** | `#D4EBFF` | `#B4D8F6` | `#C5E2FA` | `#EAF5FF` |
+Eight color families are available: **Blue, Green, Yellow, Orange, Red, Purple, Brown, and Grey**.
 
-Both variants retain Zorin's original bright blue accent (`#15A6F0`), dark text, light content views, and widget geometry. **Neither variant is a dark theme.** The name without `-Light` means *stronger blue*, not dark mode.
+Each color has four optional variants:
 
-These are GTK application themes, **not** replacements for Zorin Taskbar, GNOME Shell or your icon set.
-
-
-## Optional gradient variants
-
-The gradient experiment introduces **two additional light-based GTK themes** without
-replacing the original two:
-
-| New gradient theme | Derived from | Appearance |
+| Intensity | Vibrant (solid colors) | Gradient (complete gradient style) |
 | --- | --- | --- |
-| `ZorinVibrantBlue-Light-Gradient` | `ZorinVibrantBlue-Light` | Soft, airy blue gradients |
-| `ZorinVibrantBlue-Gradient` | `ZorinVibrantBlue` | Richer blue gradients |
+| Light — softer colors | `ZorinVibrant<Color>-Light` | `ZorinVibrant<Color>-Light-Gradient` |
+| Rich — stronger colors | `ZorinVibrant<Color>` | `ZorinVibrant<Color>-Gradient` |
 
-The gradient themes add a **horizontal titlebar gradient**, more subtle **vertical
-sidebar gradients**, and softer inactive-window colors. The broad root-window
-background gradient was removed after it caused the desktop wallpaper to turn
-white when all windows were minimized on the maintainer's Zorin OS 18.1 setup.
-They do **not** add transparency, blur, alter the taskbar or replace GNOME Shell.
-Not every GTK application honors all CSS overrides.
+The `<Color>` placeholder is replaced with the color name, for example `Green` or `Purple`. This makes **32 possible themes**, but the theme manager installs **only the variants you select**. There is no need to clutter Zorin Appearance with all 32 entries.
 
-Install the two standard variants first (see [Install](#install)); then run:
+**Important:** Both Light and Rich are **light-based GTK themes**. Rich is not Zorin Dark mode. Every variant uses its corresponding original `/usr/share/themes/Zorin<Color>-Light` source and retains the system's accent colors and widget geometry.
 
-```bash
-python3 scripts/install_gradients.py
-```
+The **Gradient** variant combines the earlier Gradient titlebar/sidebar effect with the *Extra-Gradient* fixes for additional GTK3/GTK4 navigation panels. There is no separate Extra-Gradient choice in the new installer. Gradient does **not** mean blur or translucent glass.
 
-If you already installed the local gradient prototypes and want to reinstall
-from GitHub while keeping a dated backup:
+## Install and uninstall: one interactive manager
 
-```bash
-python3 scripts/install_gradients.py --replace
-```
-
-Backups of gradient themes are placed under `~/.themes/.zorin-gradient-backups/`.
-The original Vibrant variants and the system themes remain untouched.
-Use Zorin Appearance → Theme → Other → Applications, or switch from a terminal:
-
-```bash
-gsettings set org.gnome.desktop.interface color-scheme 'default'
-gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue-Light-Gradient'
-# Or:
-gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue-Gradient'
-```
-
-To roll back, switch to `ZorinVibrantBlue-Light` or `ZorinVibrantBlue`.
-To uninstall the gradient variants, switch away first and remove only their
-two generated folders from `~/.themes/`. Reopen applications to see changes.
-
-**Compatibility:** The maintainer manually verified that the local gradient fix
-preserves the desktop wallpaper even with every window minimized on Zorin OS 18.1.
-Automated installer tests use synthetic GTK3/GTK4 theme fixtures; installation
-from this newly published GitHub script has not yet been tested on that machine.
-Different applications may apply custom CSS or behave differently.
-
-
-## Optional Extra-Gradient variants
-
-The two **Extra-Gradient** themes extend the existing Gradient variants with
-targeted sidebar rules. They are installed **alongside** all four existing
-themes—not over them:
-
-| Extra-Gradient theme | Derived from | Extra coverage |
-| --- | --- | --- |
-| `ZorinVibrantBlue-Light-extra-gradient` | `ZorinVibrantBlue-Light-Gradient` | Softer sidebar gradient for additional GTK widgets |
-| `ZorinVibrantBlue-extra-gradient` | `ZorinVibrantBlue-Gradient` | Stronger blue sidebar gradient for additional GTK widgets |
-
-The extra GTK3 CSS targets `stacksidebar.sidebar > scrolledwindow` and
-control-center/libhandy navigation scrollers. The GTK4 CSS targets
-`.sidebar-pane`, navigation lists and the narrow
-`.navigation-sidebar.background` surface, including inactive-window states.
-The established headerbar gradients are inherited unchanged from their
-Gradient parents. No global `.background` or `window.background` gradient
-is added; the earlier white-wallpaper regression must not return.
-
-### Install Extra-Gradient
-
-First install the two base Vibrant themes and the two Gradient themes as
-documented above. Then:
-
-```bash
-python3 scripts/install_extra_gradients.py
-```
-
-If you already tested the local Extra-Gradient prototypes and want to
-reinstall using the GitHub script, back up the installed variants first:
-
-```bash
-python3 scripts/install_extra_gradients.py --replace
-```
-
-Previous Extra-Gradient installations are backed up under
-`~/.themes/.zorin-extra-gradient-backups/`. The installer checks that
-its two source Gradient themes contain the safe wallpaper fix and refuses
-to copy an unpatched source. It never changes the source themes or system CSS.
-
-Choose in **Zorin Appearance → Theme → Other → Applications**, or:
-
-```bash
-gsettings set org.gnome.desktop.interface color-scheme 'default'
-gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue-Light-extra-gradient'
-# Or:
-gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue-extra-gradient'
-```
-
-To revert immediately, select `ZorinVibrantBlue-Light-Gradient` or
-`ZorinVibrantBlue-Gradient`. Open applications again to reload GTK styles.
-
-**Verification:** Both Extra-Gradient variants were installed and visually
-approved on Zorin OS 18.1 (including GNOME Settings and Zorin Appearance).
-The maintainer also confirmed the desktop wallpaper remains visible when
-all windows are minimized. Six isolated filesystem tests check install,
-backup, metadata, CSS scope and unsafe-source refusal. Other GTK applications
-and Zorin versions remain unverified; real-world layouts may use different
-CSS node structures. No blur or transparency is included.
-
-## Requirements
-
-- Zorin OS with the stock `/usr/share/themes/ZorinBlue-Light` theme (developed on Zorin OS 18.1).
-- Python 3, standard library only; no third-party Python packages.
-- A local desktop session to select the resulting GTK theme.
-
-## Install
+**Requirements:** Zorin OS with the original color themes under `/usr/share/themes/`, Python 3 (standard library only), and a desktop session for selecting the theme. Tested locally on Zorin OS 18.1; other releases remain unverified.
 
 ```bash
 cd ~
 git clone https://github.com/criger/zorin-vibrant-themes.git
 cd zorin-vibrant-themes
-python3 scripts/install.py
+python3 install.py
 ```
 
-The installer creates both themes in `~/.themes/`, copying your **locally installed original Zorin theme**. Nothing in `/usr/share/themes/` is changed and no `sudo` is needed.
+If you have already cloned the project, update your checkout before running `python3 install.py`.
 
-If you already installed early prototypes, run this instead to back them up and replace them:
+The manager behaves as follows:
 
-```bash
-python3 scripts/install.py --replace
-```
+- **No Vibrant themes installed:** goes directly to color selection.
+- **At least one Vibrant theme installed:** offers **Install**, **Uninstall**, **Show installed themes**, or **Exit**.
+- **Install:** choose color, intensity (Light/Rich/Both), then style (Vibrant/Gradient/Both); confirm the exact variants to install.
+- **Uninstall:** choose one installed theme or all listed themes; confirm removal.
+- **Already installed variant:** refuse accidental replacement; explicitly approve an overwrite to create a timestamped backup.
+- **Active theme being uninstalled:** switch to Zorin's original `ZorinBlue-Light` before deleting it.
 
-You can also install a single variant:
+Confirmation prompts use `[y/N]` (Enter means **no**). No `sudo` and no changes to `/usr/share/themes`.
 
-```bash
-python3 scripts/install.py --variant ZorinVibrantBlue-Light
-python3 scripts/install.py --variant ZorinVibrantBlue
-```
-
-### Activate
-
-Open **Zorin Appearance → Theme → Other → Applications** and select `ZorinVibrantBlue-Light` or `ZorinVibrantBlue`.
-
-Or use GSettings:
+After installation, choose the theme under **Zorin Appearance → Theme → Other → Applications**. Use the default light color scheme, for example:
 
 ```bash
 gsettings set org.gnome.desktop.interface color-scheme 'default'
-gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue'
+gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantGreen-Light-Gradient'
 ```
 
-Close and reopen affected applications, including Nemo, Nautilus and the Software store, to see the changes. GTK4/libadwaita behavior is subject to Zorin's theming support and may vary by application or system version.
-
-### Switch or roll back
+To return to an original Zorin GTK theme:
 
 ```bash
-# Brighter, more saturated blue
-gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue'
-
-# Softer, lighter blue
-gsettings set org.gnome.desktop.interface gtk-theme 'ZorinVibrantBlue-Light'
-
-# Restore stock Zorin GTK theme
 gsettings set org.gnome.desktop.interface gtk-theme 'ZorinBlue-Light'
 ```
 
-To remove the themes, first switch away from them and then delete the two user theme directories. `--replace` keeps dated backups in `~/.themes/.zorin-vibrant-backups/`; review those before deleting them.
+Reopen affected applications when changing themes; some GTK4/libadwaita apps may apply their own styles.
 
-## What the installer actually changes
+### Optional command-line mode
 
-- Copies `ZorinBlue-Light` from the machine into a separately named user theme.
-- Makes exact color substitutions in `gtk-3.0/gtk.css` and `gtk-4.0/gtk.css` only, preserving layout and selectors.
-- Updates the copied `index.theme` GTK/theme names while retaining `IconTheme=ZorinBlue-Light`.
-- Ensures the `gtk-4.0/.libadwaita` marker is present for Zorin's theme integration.
-- Adds a derivative-change notice and a GPL license copy to generated theme folders.
+```bash
+# Install one Light Blue Gradient variant
+python3 install.py --install blue --tone light --variant gradient
 
-The installed theme also contains the upstream files that `ZorinBlue-Light` already shipped, including GNOME Shell CSS; this project **does not activate or customize** those files. It does not modify the panel, GNOME extensions, icons, wallpaper or system files. No network access is required after cloning.
+# Install Rich Purple without gradients
+python3 install.py --install purple --tone rich --variant vibrant
 
-**Known limitations:** Some apps use their own style sheets or ignore GTK theme selection. The installer intentionally updates only the *light* CSS files (`gtk.css`), not `gtk-dark.css`. Keep the system color scheme set to `default`.
+# Install all four Green variants, and no other colors
+python3 install.py --install green --tone both --variant both
 
-## Development and tests
+# List installed themes
+python3 install.py --list
+
+# Uninstall a particular theme (asks for confirmation)
+python3 install.py --uninstall ZorinVibrantBlue-Light-Gradient
+
+# Inspect every supported option
+python3 install.py --help
+```
+
+The CLI defaults to `--tone rich --variant gradient` when omitted. The interactive manager remains the recommended way to install and uninstall themes.
+
+## Existing installations and retired variants
+
+The new manager uses names shared with some of the previous Blue themes. For example, `ZorinVibrantBlue-Gradient` now includes the **extra sidebar coverage** as well as its original gradients. If you have the older version with the same name, reinstalling it through the new manager (and approving replacement) gives you the updated version while retaining a backup.
+
+The older `scripts/install.py`, `scripts/install_gradients.py`, and `scripts/install_extra_gradients.py` remain in the repository for historical reproducibility; **use the new root-level `python3 install.py` for new installations**. The historical scripts are not required by the new manager.
+
+To preview and optionally remove only retired **Blue/Green Extra-Gradient and Glass** folders:
+
+```bash
+python3 cleanup_legacy.py --dry-run
+python3 cleanup_legacy.py
+```
+
+The new cleanup script recognizes **only** `-extra-gradient` and `-Glass` names for Blue/Green; it does **not** remove current Light, Rich, or Gradient variants. Do not use older experimental cleanup scripts on a new installation.
+
+## What the installer changes
+
+- Reads the original `Zorin<Color>-Light` GTK theme from the local machine; copies it to a separate, user-specific folder under `~/.themes/`.
+- Recolors only light `gtk-3.0/gtk.css` and `gtk-4.0/gtk.css` using color-specific palettes.
+- For Gradient, adds narrowly targeted titlebar and navigation/sidebar gradients, including the previously approved Extra-Gradient selectors.
+- Keeps the original theme's icons, widget geometry, dark stylesheets, Shell styling, panel, taskbar, wallpaper and fisheye extension unchanged.
+- Updates the generated theme's metadata, preserves the GTK4 `.libadwaita` marker, and adds derivative-change and GPL notices.
+- Uses preflight checks and staging; explicit replacements are backed up under `~/.themes/.zorin-vibrant-backups/` and rolled back on an installation failure.
+
+**Safety note:** A former experimental broad `.background` / `window.background` gradient caused a white-wallpaper regression when all windows were minimized. The new generator does **not** reintroduce those global overrides. No glass transparency or compositor blur is included.
+
+## Development and testing
 
 ```bash
 python3 -m unittest discover -s tests -v
-python3 -m compileall -q scripts tests
+python3 -m compileall -q install.py cleanup_legacy.py scripts tests
 ```
 
-Tests cover the base, Gradient and Extra-Gradient installers using synthetic Zorin-style theme fixtures, so they can run without installing any theme or modifying your desktop. Zorin OS 18.1 appearance was manually reviewed during palette prototyping; cross-version compatibility remains to be verified.
+The theme-manager test module checks all 32 variant combinations, source compatibility, selective installation, backup/rollback, safe removal, and English prompts with synthetic Zorin-style file trees. Previous installers have their own historical test modules. These automated tests do not establish visual compatibility across all Zorin releases or third-party applications.
 
-## Credits, copyright and licensing
+The Blue palettes and initial Green palette were visually reviewed on Zorin OS 18.1. Other colors were generated from their stock Zorin counterparts and remain subject to real desktop testing. All 8 colors were inspected against their original Zorin color files.
+
+## Credits, copyright, and licensing
 
 - **Original upstream theme:** [Zorin Desktop Themes](https://github.com/ZorinOS/zorin-desktop-themes) — © its original authors, distributed under GNU GPL version 2.
-- **Zorin Vibrant Themes:** color selection, installer, docs and maintenance by **Cristhian Gertner**, © 2026 where applicable.
-- **License:** [GNU General Public License v2](LICENSE) (`GPL-2.0-only`). Users may use, study, modify and redistribute the work under that license, with required notices and the same freedoms for derivatives.
+- **Zorin Vibrant Themes:** palette design, generator, installers, documentation and maintenance by **Cristhian Gertner**, © 2026 where applicable.
+- **License:** [GNU GPL v2](LICENSE) (`GPL-2.0-only`). Generated derivatives preserve upstream attribution.
 
-The repository **does not vendor Zorin's original theme CSS**. The installer creates a GPL-licensed derivative using the user's existing Zorin installation and records a change notice. This project does not claim authorship of Zorin's original files.
+The repository does **not** vendor Zorin's original CSS. Installed copies are made from the user's own Zorin installation. This project does not claim authorship of Zorin's original assets.
 
 ## Related work
 
-[ZorinOS Fisheye Taskbar](https://github.com/criger/zorinos-fisheye-taskbar) enhances the existing bottom taskbar while leaving Zorin's taskbar layout intact. It is independent of this theme.
+[ZorinOS Fisheye Taskbar](https://github.com/criger/zorinos-fisheye-taskbar) enhances the existing Zorin taskbar while preserving its layout. It is independent of this theme project.
 
-Contributions and bug reports are welcome. Include your Zorin version, GTK app/version and a screenshot with private information removed.
+Issues and contributions are welcome. Include your Zorin version, GTK application/version, and screenshots with private details removed.

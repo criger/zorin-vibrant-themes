@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-21 — Interactive international theme manager (8 colors, 32 choices)
+
+- Added root-level `install.py`: interactive Install / Uninstall / Show installed with English prompts and `[y/N]` confirmations; installs only explicitly selected themes.
+- Added `scripts/vibrant_engine.py` with eight stock Zorin color families (Blue, Green, Yellow, Orange, Red, Purple, Brown, Grey), two light-based intensities (Light and Rich), and two styles (Vibrant and Gradient).
+- The new `-Gradient` style includes the former Extra-Gradient sidebar selectors; no glass, translucency, blur, broad root background overrides, Shell or taskbar changes.
+- Added safe uninstall, backup-on-explicit-replacement, atomic staging/rollback, exact source validation, and `cleanup_legacy.py` for retired Blue/Green `-extra-gradient` / `-Glass` names only.
+- Preserved existing historical installer scripts, source files, full-resolution README screenshots, Buy Me a Coffee section and copyright attribution.
+- Added 21 theme-manager tests (21/21 passed locally), covering 32 selections, English menus, selective install, rollback, and safe removal. Prior 15 test files were not rerun together with these in this release.
+- Maintainer visually approved the v2 local manager and tested installing and uninstalling on Zorin OS 18.1. Other Zorin releases and complete per-app matrix are not verified.
+
 ## 2026-11-20 — Add two Extra-Gradient variants
 
 - Added `ZorinVibrantBlue-Light-extra-gradient` and `ZorinVibrantBlue-extra-gradient`, each derived from the corresponding installed Gradient theme.
